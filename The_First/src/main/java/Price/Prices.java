@@ -1,3 +1,5 @@
+package Price;
+
 public class Prices {
     private double price ;
 
