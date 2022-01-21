@@ -5,5 +5,6 @@ public class Main {
         Main controller = new Main();
         InitNewValues initMsciAcwi = new InitNewValues();
         initMsciAcwi.getInfo();
+        System.out.println("halloo");
     }
 }

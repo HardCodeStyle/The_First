@@ -8,12 +8,11 @@ public class ReadPriceFromGoogleFinance {
     String[] fileNames;
 
     public Prices read_Price_From_Download(String[] stocks) {
-        System.out.println("Hallo");
         getFileNames();
         for(int i=0 ; i< fileNames.length;i++){
             System.out.println(fileNames[i]);
             System.out.println(i);
-            String lineOfPriceGoogle = read_Line_Of_Price_From_Download("Files/"+fileNames[i]);
+            String lineOfPriceGoogle = read_Line_Of_Price_From_Download("The_First/src/Files/"+fileNames[i]);
             Double price = cut_Price_From_String(lineOfPriceGoogle);
             Prices prices = new Prices();
             prices.setPrice(price);
@@ -29,8 +28,9 @@ public class ReadPriceFromGoogleFinance {
     }
 
     private void getFileNames() {
-        File f = new File("Files/");
+        File f = new File("The_First/src/Files");
         fileNames = f.list();
+        System.out.println(fileNames.length);
     }
 
     private Double cut_Price_From_String(String lineOfPriceGoogle) {

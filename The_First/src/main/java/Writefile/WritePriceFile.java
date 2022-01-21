@@ -6,7 +6,7 @@ public class WritePriceFile {
     public void SaveMsciAcwi(double price, String stock){
         PrintWriter out = null;
         try {
-            out = new PrintWriter(new BufferedWriter(new FileWriter("DataFiles/SavedPrice"+stock+".txt", true)));
+            out = new PrintWriter(new BufferedWriter(new FileWriter("The_First/src/DataFiles/SavedPrice"+stock+".txt", true)));
             out.println(price+"==="+java.time.LocalDate.now());
         } catch (IOException e) {
             System.err.println(e);
