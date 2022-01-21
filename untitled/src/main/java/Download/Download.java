@@ -22,7 +22,7 @@ public class Download {
                     String name = stocks [i].replace(":","_");
                     // Enter filename in which you want to download
                     BufferedWriter writer =
-                            new BufferedWriter(new FileWriter("The_First/src/Files/Download_"+name+"_"+dateString+"_"+".txt"));
+                            new BufferedWriter(new FileWriter("untitled/src/Files/Download_"+name+"_"+dateString+"_"+".txt"));
 
                     // read each line from stream till end
                     String line;
