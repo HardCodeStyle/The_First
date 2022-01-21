@@ -7,11 +7,9 @@ import Writefile.WritePriceFile;
 public class ReadPriceFromGoogleFinance {
     String[] fileNames;
 
-    public Prices read_Price_From_Download(String[] stocks) {
+    public void read_Price_From_Download(String[] stocks) {
         getFileNames();
         for(int i=0 ; i< fileNames.length;i++){
-            System.out.println(fileNames[i]);
-            System.out.println(i);
             String lineOfPriceGoogle = read_Line_Of_Price_From_Download("untitled/src/Files/"+fileNames[i]);
             Double price = cut_Price_From_String(lineOfPriceGoogle);
             Prices prices = new Prices();
@@ -23,14 +21,13 @@ public class ReadPriceFromGoogleFinance {
                 writePriceFile.SaveMsciAcwi(prices.getPrice(),stocks[1]);
             }
         }
-
-        return null;
+        System.out.println("File deleted successfully");
+        System.out.println("Saved all Data !");
     }
 
     private void getFileNames() {
         File f = new File("untitled/src/Files");
         fileNames = f.list();
-        System.out.println(fileNames.length);
     }
 
     private Double cut_Price_From_String(String lineOfPriceGoogle) {
@@ -57,11 +54,9 @@ public class ReadPriceFromGoogleFinance {
 
         File file = new File(fileName);
         if (file.delete()) {
-            System.out.println("File deleted successfully");
         } else {
             System.out.println("Failed to delete the file");
         }
         return lineOfPriceGoogle;
     }
-
 }
