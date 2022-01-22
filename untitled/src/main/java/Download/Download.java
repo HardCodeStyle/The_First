@@ -6,8 +6,8 @@ import java.net.URL;
 import java.util.Date;
 
 public class Download {
-
-    public void download(String[] stocks) {
+boolean state = true ;
+    public boolean download(String[] stocks, String[] stocksFolder) {
 
         for (int i = 0; i <= stocks.length - 1; i++) {
             String webpage = "https://www.google.com/finance/quote/" + stocks[i];
@@ -19,10 +19,9 @@ public class Download {
                         new BufferedReader(new InputStreamReader(url.openStream()));
                 Date date = new Date();
                 String dateString = String.valueOf(date.getTime());
-                String name = stocks[i].replace(":", "_");
                 // Enter filename in which you want to download
                 BufferedWriter writer =
-                        new BufferedWriter(new FileWriter("untitled/src/Files/Download_" + name + "_" + dateString + "_" + ".txt"));
+                        new BufferedWriter(new FileWriter("untitled/src/Files/Download_" + stocksFolder[i] + "_" + dateString + "_" + ".txt"));
 
                 // read each line from stream till end
                 String line;
@@ -35,12 +34,10 @@ public class Download {
 
             }
             // Exceptions
-            catch (MalformedURLException mue) {
-                System.out.println("Malformed URL Exception raised");
-            } catch (IOException ie) {
-                System.out.println(ie);
+            catch (IOException e) {
+                state = false;
             }
         }
-        System.out.println("Successfully Downloaded.");
+        return state;
     }
 }

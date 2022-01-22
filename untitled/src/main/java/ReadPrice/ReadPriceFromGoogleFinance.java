@@ -6,23 +6,24 @@ import Writefile.WritePriceFile;
 
 public class ReadPriceFromGoogleFinance {
     String[] fileNames;
+    boolean state = true;
 
-    public void read_Price_From_Download(String[] stocks) {
+    public boolean read_Price_From_Download(String[] stocks) {
         getFileNames();
-        for(int i=0 ; i< fileNames.length;i++){
-            String lineOfPriceGoogle = read_Line_Of_Price_From_Download("untitled/src/Files/"+fileNames[i]);
+        for (String fileName : fileNames) {
+            String lineOfPriceGoogle = read_Line_Of_Price_From_Download("untitled/src/Files/" + fileName);
             Double price = cut_Price_From_String(lineOfPriceGoogle);
             Prices prices = new Prices();
             prices.setPrice(price);
             WritePriceFile writePriceFile = new WritePriceFile();
-            if(fileNames[i].contains(stocks[0])){
-                writePriceFile.SaveMsciAcwi(prices.getPrice(),stocks[0]);
-            }else if (fileNames[i].contains(stocks[1])){
-                writePriceFile.SaveMsciAcwi(prices.getPrice(),stocks[1]);
+            if (fileName.contains(stocks[0])) {
+                writePriceFile.SaveMsciAcwi(prices.getPrice(), stocks[0]);
+            } else if (fileName.contains(stocks[1])) {
+                writePriceFile.SaveMsciAcwi(prices.getPrice(), stocks[1]);
             }
         }
-        System.out.println("File deleted successfully");
-        System.out.println("Saved all Data !");
+
+        return state;
     }
 
     private void getFileNames() {
@@ -35,8 +36,7 @@ public class ReadPriceFromGoogleFinance {
         String[] result1 = result[1].split(" ");
         String test = result1[0].replace("=", "");
         test = test.replace("\"", "");
-        double price = Double.parseDouble(test);
-        return price;
+        return Double.parseDouble(test);
     }
 
     public String read_Line_Of_Price_From_Download(String fileName) {
@@ -49,14 +49,13 @@ public class ReadPriceFromGoogleFinance {
             }
             // line is not visible here.
         } catch (IOException e) {
+            state = false;
             e.printStackTrace();
         }
 
         File file = new File(fileName);
-        if (file.delete()) {
-        } else {
-            System.out.println("Failed to delete the file");
-        }
+        file.delete();
+
         return lineOfPriceGoogle;
     }
 }
