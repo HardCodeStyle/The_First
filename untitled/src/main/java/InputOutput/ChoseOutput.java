@@ -1,5 +1,7 @@
 package InputOutput;
 
+import java.util.List;
+
 public class ChoseOutput {
     private String OutPut ;
 
@@ -39,5 +41,13 @@ public class ChoseOutput {
     public String helpMessage() {
         return "/help ----> you got help\n" +
                 "/stocks ----> you got an list of all Stocks";
+    }
+
+    public String listSocks( List<String> stocks) {
+        StringBuilder result= new StringBuilder("\nList of Stocks:\n");
+        for (String a:stocks) {
+            result.append(a).append("\n");
+        }
+        return result.toString();
     }
 }
