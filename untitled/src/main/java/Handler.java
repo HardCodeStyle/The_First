@@ -3,16 +3,15 @@ import InputOutput.*;
 
 public class Handler {
     Input input = new Input();
-    choseOutput choseOutput = new choseOutput();
+    ChoseOutput choseOutput = new ChoseOutput();
     Output output = new Output();
+    CheckInput checkInput = new CheckInput();
 
     public void handlerInput(Handler handler){
         handler.checkInput(input.Input());
     }
 
     public void checkInput(String readFromConsole){
-        if (readFromConsole.equals("/help")){
-            output.output(choseOutput.helpMessage());
-        }
+       output.output(checkInput.CheckInputFromConsole(readFromConsole,choseOutput));
     }
 }

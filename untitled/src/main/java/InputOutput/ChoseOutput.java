@@ -1,6 +1,6 @@
 package InputOutput;
 
-public class choseOutput {
+public class ChoseOutput {
     private String OutPut ;
 
     public String getOutPut() {

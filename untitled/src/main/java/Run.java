@@ -1,10 +1,10 @@
 import Init.InitNewValues;
 import InputOutput.Output;
-import InputOutput.choseOutput;
+import InputOutput.ChoseOutput;
 
 public class Run {
     boolean state = true;
-    choseOutput choseOutput = new choseOutput();
+    ChoseOutput choseOutput = new ChoseOutput();
     Output output = new Output();
     Handler handler = new Handler();
 

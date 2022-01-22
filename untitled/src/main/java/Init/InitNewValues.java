@@ -6,10 +6,10 @@ import ReadPrice.ReadPriceFromGoogleFinance;
 public class InitNewValues {
     ReadPriceFromGoogleFinance readPriceFromGoogleFinance = new ReadPriceFromGoogleFinance();
     Download download = new Download();
+    String[] stocks = {"SSAC:AMS","CCC3:ETR"};
+    String[] stocksFolder = {"SSAC_AMS","CCC3_ETR"};
 
     public int getInfo(){
-        String[] stocks = {"SSAC:AMS","CCC3:ETR"};
-        String[] stocksFolder = {"SSAC_AMS","CCC3_ETR"};
         boolean stateDownload = download(stocks,stocksFolder);
         boolean stateSave = save(stocksFolder);
         if (stateDownload && stateSave ){
@@ -20,12 +20,16 @@ public class InitNewValues {
             return 2;
         }
     }
+    private boolean loadDataFromFileForListOfStocks(){
 
+        return false;
+    }
     private boolean download(String[] stocks, String[] stocksFolder) {
 
         return download.download(stocks,stocksFolder);
 
     }
+
     private boolean save(String[] stocksFolder){
         return readPriceFromGoogleFinance.read_Price_From_Download(stocksFolder);
     }
