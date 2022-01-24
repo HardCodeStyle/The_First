@@ -10,6 +10,7 @@ public class Handler {
     private final CheckInput checkInput ;
     private final Data data;
 
+
         public Handler(Data data, Output output, ChoseOutput choseOutput){
             this.input = new Input() ;
             this.checkInput = new CheckInput();
@@ -22,6 +23,6 @@ public class Handler {
     }
 
     public void checkInput(String readFromConsole){
-       output.output(checkInput.CheckInputFromConsole(readFromConsole,choseOutput,data));
+       output.output(checkInput.CheckInputFromConsole(readFromConsole,choseOutput,data,checkInput));
     }
 }

@@ -39,8 +39,9 @@ public class ChoseOutput {
     }
 
     public String helpMessage() {
-        return "/help ----> you got help\n" +
-                "/stocks ----> you got an list of all Stocks";
+        return "\n/help ----> you get help\n" +
+                "/stocks ----> you get an list of all Stocks\n" +
+                "/{name of stock} ----> you get am list of all data to this stock\n";
     }
 
     public String listSocks( List<String> stocks) {

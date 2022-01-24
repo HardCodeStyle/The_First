@@ -25,6 +25,7 @@ public class Run {
         while (state){
             output.output(choseOutput.firstMessageInLoop());
             handler.handlerInput(handler);
+
         }
     }
 
